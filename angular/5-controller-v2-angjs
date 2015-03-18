@@ -9,8 +9,26 @@
 	.panel-primary {width:30%; float:left; margin-right:2%; min-height: 180px}
     .panel-default  {width:50%; float:left; margin-right:2%; min-height: 180px}
 	.cl {clear:both;}
-	input[type=text], textarea {padding: 3px; border-radius: 4px; border: 1px solid rgba(0,0,0,2)
+	input[type=text], textarea {padding: 3px; border-radius: 4px; border: 1px solid rgba(0,0,0,2)}
+	textarea {width: 100%}
 
+
+form {
+	margin: 20px O;
+}
+fieldset {
+	border:none;
+	
+}
+legend {
+	font-size:24px;
+	margin-bottom:20px;
+}
+p {
+	line-height: 1.6;
+}
+
+input, textarea {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background-color:#fff;
 	border:1px solid #ccc;
@@ -21,18 +39,16 @@
 	margin-bottom:16px;
 	margin-top:8px;
 	
+	-webkit-border-radius:5px;
+	-moz-border-radius:5px;
+	border-radius:5px;
+	
 	-webkit-transition: all 0.5s ease-in-out;
 	-moz-transition: all 0.5s ease-in-out;
 	transition: all 0.5s ease-in-out;
-
-	}
-
-form {
-	margin: 20px O;
 }
 
-
-textarea { width: 100%;
+textarea {
 		min-height:200px;
 }
 
@@ -50,7 +66,17 @@ input:not(:focus), textarea:not(:focus) {
 	opacity:0.5;
 }
 
+input:required, textarea:required {
+	background:url("img/asterisk_orange.png") no-repeat 280px 7px;						
+}
 
+input:valid, textarea:valid {
+	background:url("img/tick.png") no-repeat 280px 5px;			
+}		
+
+input:focus:invalid, textarea:focus:invalid {
+	background:url("img/cancel.png") no-repeat 280px 7px;						
+}
 
 input[type=submit] {
 	padding:10px;
@@ -77,21 +103,15 @@ input[type=submit] {
 	<div class="cl">
 		<h3>Add a Portfolio</h3>
 		<div class="panel panel-default">
-			<form name="add_portfolio_form">
+			<form name="add_portfolio_form" novalidate>
 				<div class="panel-heading">
-					<label for="date">date</label> 
-					<input type="text" name="date" required placeholder="yyyy/mm/dd" ng-model="adding_portfolio.date" ng-required="true" ng-Minlength="10"/>
-					<label for="title">title</label> 
+					<input type="text" name="date" required placeholder="yyyy/mm/dd" size="12" ng-model="adding_portfolio.date" ng-required="true" ng-Minlength="10"/>
 					<input type="text" name="title" required placeholder="title" size="20" ng-model="adding_portfolio.title" />
 				<!--</div>
 				<div class="panel-body">-->
-					<label for="desc">desc</label> 
 					<textarea name="description" placeholder="desc" required rows="4" ng-model="adding_portfolio.description"></textarea>
 					<input type="text" name="name" required placeholder="name" size="12" ng-model="adding_portfolio.name" />
-					<label for="image">image</label> 
 					<input type="text" name="imageurl" placeholder="imgurl" required size="22" ng-model="adding_portfolio.imageurl" />
-					<label for="email">email</label> 
-					<input type="email" name="email" placeholder="email" required size="22" />
 				</div>
 				<button ng-click="AddPortfolio(adding_portfolio)" class="btn btn-success">submit</button>
 			</form>
